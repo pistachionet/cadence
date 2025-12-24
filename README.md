@@ -2,6 +2,8 @@
 
 Cadence is a speed reading application that leverages **Rapid Serial Visual Presentation (RSVP)** to help you read faster. By displaying words one at a time at a fixed location, it eliminates the need for your eyes to move across the page (saccades), allowing for significantly higher reading speeds and improved focus.
 
+**Hosted at**: [ireadfaster.com](https://ireadfaster.com)
+
 ## Features
 
 - **High-Speed Reading**: Adjust speeds from **100 up to 700 WPM** (Words Per Minute).
@@ -29,10 +31,11 @@ Cadence is a speed reading application that leverages **Rapid Serial Visual Pres
 3.  Install dependencies: `npm install`
 4.  Run development server: `npm run dev`
 
-## Deployment
+## Contributing
 
-This project is configured for deployment on Netlify.
+If you have suggestions for layout improvements, new features, or bug fixes, please feel free to open a Pull Request.
 
-- **Base directory**: `frontend`
-- **Build command**: `npm run build`
-- **Publish directory**: `dist`
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
