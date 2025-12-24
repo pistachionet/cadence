@@ -7,8 +7,8 @@
 
   <p>
     <!-- License -->
-    <a href="LICENSE">
-      <img src="https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg?style=flat-square" alt="License: CC BY-NC 4.0" />
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+      <img src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg?style=flat-square" alt="License: CC BY-NC-SA 4.0" />
     </a>
     <!-- Tech Stack -->
     <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React" />
@@ -33,13 +33,12 @@ Cadence is a speed reading application that leverages **Rapid Serial Visual Pres
   - **Scrubbing**: Click or drag along the progress bar to jump to any point in the text.
   - **Rewind**: "Back a Sentence" button to quickly re-read the previous segment.
   - **Play/Pause**: Easy toggle with spacebar or on-screen controls.
-- **Distraction-Free UI**: Minimalist dark mode design to keep you focused on the text.
+- **File Format Support**: PDF files are only supported at this time.
 
 ## Tech Stack
 
 - **Frontend**: React, TypeScript, Vite
 - **Styling**: Tailwind CSS
-- **PDF Processing**: pdf.js
 - **State Management**: Zustand
 
 ## Getting Started
@@ -55,8 +54,6 @@ If you have suggestions for layout improvements, new features, or bug fixes, ple
 
 ## License
 
-Distributed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)**.
-
-This means you are free to use, modify, and distribute this software for personal use or to contribute to the project, but you **cannot** use it for commercial purposes (e.g., selling it, using it in a commercial product) without permission.
+Distributed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)**.
 
 See `LICENSE` for more information.
