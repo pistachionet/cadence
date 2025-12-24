@@ -1,9 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReaderStore } from "../store/useReaderStore";
 
 export const ReaderCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { tokens, currentIndex } = useReaderStore();
+  const [resizer, setResizer] = useState(0);
 
   // Config
   const fontSize = 60;
@@ -83,7 +84,32 @@ export const ReaderCanvas = () => {
     // Draw Part 2 (White)
     ctx.fillStyle = "#ffffff";
     ctx.fillText(part2, p2StartX, centerY);
-  }, [tokens, currentIndex]); // Redraw on update
+  }, [tokens, currentIndex, resizer]); // Redraw on update
+
+  // Handle Resize
+  useEffect(() => {
+    const handleResize = () => {
+      // Force re-render/re-draw by updating a dummy state or just relying on the next render cycle
+      // Actually, since we use `currentIndex` and `tokens` in the effect, we might need to
+      // trigger it explicitly if the window resizes, OR we can just add a resize listener
+      // that re-runs the logic.
+      // The easiest way is to add 'window.innerWidth' or similar to dependencies,
+      // or just re-run the canvas resizing logic.
+
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      // We need to re-run the setup code.
+      // Setting a state variable here is a clean React way to trigger re-effect.
+      setResizer((prev: number) => prev + 1);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <canvas

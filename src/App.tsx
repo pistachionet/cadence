@@ -119,11 +119,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-900 text-white flex flex-col items-center justify-center p-8 font-sans">
+    <div className="min-h-screen bg-neutral-900 text-white flex flex-col items-center justify-center p-4 md:p-8 font-sans">
       <div className="max-w-3xl w-full space-y-8">
         {/* Header */}
         <div className="text-center space-y-2">
-          <h1 className="text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">
+          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">
             Cadence
           </h1>
           <p className="text-neutral-400 text-lg">High-Velocity Reader</p>
@@ -193,8 +193,8 @@ function App() {
         {/* Controls */}
         <div className="bg-neutral-800/50 backdrop-blur p-6 rounded-2xl border border-neutral-700/50 flex flex-col gap-6 shadow-xl">
           {/* Top Row: Playback & File */}
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-6 w-full md:w-auto justify-center md:justify-start">
               <button
                 onClick={handlePlayToggle}
                 disabled={!tokens.length}
@@ -217,7 +217,7 @@ function App() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-3 w-full md:w-auto">
               <button
                 onClick={prevSentence}
                 className="p-3 rounded-xl text-neutral-400 hover:text-white hover:bg-neutral-700/50 transition"
