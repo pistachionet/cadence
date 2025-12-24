@@ -1,73 +1,38 @@
-# React + TypeScript + Vite
+# Cadence - High-Velocity Reader
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Cadence is a speed reading application that leverages **Rapid Serial Visual Presentation (RSVP)** to help you read faster. By displaying words one at a time at a fixed location, it eliminates the need for your eyes to move across the page (saccades), allowing for significantly higher reading speeds and improved focus.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **High-Speed Reading**: Adjust speeds from **100 up to 700 WPM** (Words Per Minute).
+- **Optimal Recognition Point (ORP)**: Highlights the optimal viewing position within each word (colored in subtle light red) to maximize recognition speed.
+- **PDF Support**:
+  - **Drag and Drop**: Simply drag a PDF file onto the reader to start reading immediately.
+  - **File Picker**: Use the standard upload button.
+- **Interactive Controls**:
+  - **Scrubbing**: Click or drag along the progress bar to jump to any point in the text.
+  - **Rewind**: "Back a Sentence" button to quickly re-read the previous segment.
+  - **Play/Pause**: Easy toggle with spacebar or on-screen controls.
+- **Distraction-Free UI**: Minimalist dark mode design to keep you focused on the text.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: React, TypeScript, Vite
+- **Styling**: Tailwind CSS
+- **PDF Processing**: pdf.js
+- **State Management**: Zustand
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1.  Clone the repository.
+2.  Navigate to `frontend`: `cd frontend`
+3.  Install dependencies: `npm install`
+4.  Run development server: `npm run dev`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Deployment
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+This project is configured for deployment on Netlify.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Base directory**: `frontend`
+- **Build command**: `npm run build`
+- **Publish directory**: `dist`
