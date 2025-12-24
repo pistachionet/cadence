@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useReaderStore } from "../store/useReaderStore";
+import { calculateDelay } from "../lib/timing";
 
 export const useReaderEngine = () => {
   const isPlaying = useReaderStore((state) => state.isPlaying);
@@ -7,8 +8,7 @@ export const useReaderEngine = () => {
   // but the effect needs dependencies.
   // Actually, we use refs for mutable state tracking in the loop.
 
-  const requestRef = useRef<number>();
-  const startTimeRef = useRef<number>(0);
+  const requestRef = useRef<number | undefined>(undefined);
   const lastWordChangeRef = useRef<number>(0);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export const useReaderEngine = () => {
     lastWordChangeRef.current = performance.now();
 
     const loop = (time: number) => {
-      const { tokens, currentIndex, nextWord, setIsPlaying } =
+      const { tokens, currentIndex, nextWord, setIsPlaying, targetWpm } =
         useReaderStore.getState();
 
       if (currentIndex >= tokens.length - 1) {
@@ -42,7 +42,10 @@ export const useReaderEngine = () => {
 
       const elapsed = time - lastWordChangeRef.current;
 
-      if (elapsed >= currentToken.delay_ms) {
+      // Calculate delay dynamically based on current WPM
+      const currentDelay = calculateDelay(currentToken.text, targetWpm);
+
+      if (elapsed >= currentDelay) {
         // Time to switch!
         nextWord();
 
@@ -50,7 +53,7 @@ export const useReaderEngine = () => {
         // instead of lastWordChange = time, we subtract the overshoot
         // But we must be careful not to overshoot negatively if lag is huge.
         // Simple drift correction:
-        lastWordChangeRef.current = time - (elapsed % currentToken.delay_ms);
+        lastWordChangeRef.current = time - (elapsed % currentDelay);
       }
 
       requestRef.current = requestAnimationFrame(loop);

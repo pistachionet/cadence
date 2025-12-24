@@ -19,6 +19,7 @@ interface ReaderState {
   setTargetWpm: (wpm: number) => void;
   nextWord: () => void;
   prevWord: () => void;
+  prevSentence: () => void;
   reset: () => void;
 }
 
@@ -42,6 +43,37 @@ export const useReaderStore = create<ReaderState>((set) => ({
     set((state) => ({
       currentIndex: Math.max(state.currentIndex - 1, 0),
     })),
+
+  prevSentence: () =>
+    set((state) => {
+      if (state.currentIndex === 0) return state;
+
+      let i = state.currentIndex - 1;
+      // Skip the punctuation of the *current* sentence if we are right on it
+      // but usually we are on a word.
+
+      // We want to find the END of the PREVIOUS sentence, then go +1.
+      // Scan backwards.
+      while (i > 0) {
+        const t = state.tokens[i - 1]; // Look at the token BEFORE i
+        if (
+          t.text.endsWith(".") ||
+          t.text.endsWith("!") ||
+          t.text.endsWith("?")
+        ) {
+          // Found end of previous sentence. 'i' is the start of current/next sentence.
+          // If we were already at the start of a sentence (i approx currentIndex),
+          // we want to go back further.
+
+          // Heuristic: if we moved less than 2 words, keep searching back
+          if (state.currentIndex - i > 2) {
+            return { currentIndex: i };
+          }
+        }
+        i--;
+      }
+      return { currentIndex: 0 };
+    }),
 
   reset: () => set({ currentIndex: 0, isPlaying: false }),
 }));

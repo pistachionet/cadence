@@ -62,7 +62,7 @@ export const ReaderCanvas = () => {
 
     const w1 = ctx.measureText(part1).width;
     const wOrp = ctx.measureText(orpChar).width;
-    const w2 = ctx.measureText(part2).width;
+    // const w2 = ctx.measureText(part2).width; // Unused
 
     // Calculate positions
     // We want the CENTER of the ORP char to be at centerX
@@ -76,8 +76,8 @@ export const ReaderCanvas = () => {
     ctx.fillStyle = "#ffffff";
     ctx.fillText(part1, p1StartX, centerY);
 
-    // Draw ORP (Red)
-    ctx.fillStyle = "#ff4444";
+    // Draw ORP (Light Red)
+    ctx.fillStyle = "#ff9999";
     ctx.fillText(orpChar, orpStartX, centerY);
 
     // Draw Part 2 (White)
