@@ -7,8 +7,9 @@
 
   <p>
     <!-- License -->
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-      <img src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg?style=flat-square" alt="License: CC BY-NC-SA 4.0" />
+    <!-- License -->
+    <a href="https://opensource.org/licenses/MIT">
+      <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square" alt="License: MIT" />
     </a>
     <!-- Tech Stack -->
     <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React" />
@@ -54,6 +55,6 @@ If you have suggestions for layout improvements, new features, or bug fixes, ple
 
 ## License
 
-Distributed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)**.
+Distributed under the **MIT License**.
 
 See `LICENSE` for more information.
